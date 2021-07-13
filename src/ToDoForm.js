@@ -1,37 +1,45 @@
 import { React, useState } from 'react';
-import { Button, Input } from '@material-ui/core';
+import { Button, Input, TextareaAutosize } from '@material-ui/core';
 
 function ToDoForm({ addTask }) {
-  const [userInput, setUserInput] = useState('');
+  const [headerInput, setHeaderInput] = useState('');
+  const [bodyInput, setBodyInput] = useState('');
 
-  const handleChange = (e) => {
-    setUserInput(e.currentTarget.value); 
+  const handleHeaderInputChange = (e) => {
+    setHeaderInput(e.currentTarget.value); 
+  }
+
+  const handleBodyInputChange = (e) => {
+    setBodyInput(e.currentTarget.value);
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    addTask(userInput);
-    setUserInput("");
+    // e.preventDefault();
+    // addTask(userInput);
+    // setUserInput("");
 }
-
-  const handleKeyPress = (e) => {
-    if(e.key === 'Enter') {
-      handleSubmit(e);
-    }
-  } 
 
   return (
     <form 
       onSubmit={handleSubmit}
       className="todo-form"
     >
-      <Input 
-        value={userInput}
-        type="text"
-        onChange={handleChange}
-        onKeyDown={handleKeyPress}
-        placeholder="Введите значение..."
-      />        
+      <div className="todo-form__textblock">
+        <Input 
+          value={headerInput}
+          type="text"
+          onChange={handleHeaderInputChange}
+          placeholder="Введите заголовок..."
+        />  
+
+        <TextareaAutosize  
+          className="todo-form__textarea"
+          onChange={handleBodyInputChange}
+          value={bodyInput}
+          type="text"
+          placeholder="Заметка..."
+        />   
+      </div>
       <Button 
         variant="contained" 
         color="primary" 

@@ -11,6 +11,16 @@ body {
   align-items: center;
   gap: 16px;
   justify-content: center;
+
+  &__textblock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__textarea {
+    resize: none;
+  }
 }
 
 .create-button {
