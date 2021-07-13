@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import ToDo from './ToDo';
 import ToDoForm from './ToDoForm';
+import {Button} from '@material-ui/core';
 
 function App() {
   const [todos, setTodos] = useState([]);
+  let [isTapped, setTapped] = useState(false);
 
   const addTask = (userInput) => {
     if(userInput) {
@@ -26,13 +28,32 @@ function App() {
     ])
   }
 
-
+  const Creation = () => {
+    if(!isTapped) {
+      return (
+        <div className="create-button">
+        <Button
+          variant="contained" 
+          color="primary" 
+          type="submit"
+          onClick={() => {
+            setTapped(isTapped = !isTapped);
+          }}
+        >Создать заметку</Button>
+        </div>
+      )
+    } else {
+      return (
+        <ToDoForm 
+          addTask={addTask}  
+        />
+      )
+    }
+  }
 
   return (
     <div className="app">
-      <ToDoForm 
-        addTask={addTask}  
-      />
+    <Creation  isTapped={isTapped} />
       {todos.map((todo) => {
         return (
           <ToDo

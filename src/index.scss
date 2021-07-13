@@ -5,15 +5,15 @@ body {
   width: 100vw;
 }
 
-
-.app {
-
-}
-
 .todo-form {
   margin-top: 10vh;
   display: flex;
   align-items: center;
   gap: 16px;
   justify-content: center;
+}
+
+.create-button {
+  margin-top: 10vh;
+  text-align: center;
 }
