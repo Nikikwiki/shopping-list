@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+* {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
 body {
   margin: 0;
-  font-family: 'Roboto';
   height: 100vh;
   width: 100vw;
 }
@@ -13,13 +18,37 @@ body {
   justify-content: center;
 
   &__textblock {
+    border: 1px solid rgba($color: #000000, $alpha: 0.42);
+    border-radius: 4px;
+    padding: 8px;
+    width: 600px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
   }
 
   &__textarea {
     resize: none;
+    min-height: 48px;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-size: 14px;
+  }
+  
+  &__input {
+    font-size: 16px;
+    border: none;
+    outline: 'none';
+    font-weight: bold !important;
+  }
+
+  &__tools {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 

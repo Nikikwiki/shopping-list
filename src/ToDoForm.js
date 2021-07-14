@@ -1,5 +1,8 @@
+import { TextareaAutosize, InputBase, IconButton  } from '@material-ui/core';
 import { React, useState } from 'react';
-import { Button, Input, TextareaAutosize } from '@material-ui/core';
+import { Save } from '@material-ui/icons';
+
+
 
 function ToDoForm({ addTask }) {
   const [headerInput, setHeaderInput] = useState('');
@@ -25,11 +28,12 @@ function ToDoForm({ addTask }) {
       className="todo-form"
     >
       <div className="todo-form__textblock">
-        <Input 
+        <InputBase 
           value={headerInput}
           type="text"
           onChange={handleHeaderInputChange}
-          placeholder="Введите заголовок..."
+          placeholder="Введите заголовок"
+          className="todo-form__input"
         />  
 
         <TextareaAutosize  
@@ -39,12 +43,17 @@ function ToDoForm({ addTask }) {
           type="text"
           placeholder="Заметка..."
         />   
+
+        <div className="todo-form__tools">
+        <IconButton 
+          variant="contained" 
+          color="primary" 
+          type="submit">
+          <Save/>
+        </IconButton>
+        </div>
+
       </div>
-      <Button 
-        variant="contained" 
-        color="primary" 
-        type="submit">
-      Сохранить</Button>
     </form>
   );
 }
