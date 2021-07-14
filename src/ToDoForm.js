@@ -17,9 +17,12 @@ function ToDoForm({ addTask }) {
   }
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    // addTask(userInput);
-    // setUserInput("");
+    e.preventDefault();
+    const a = {headerInput, bodyInput}
+    addTask(a);
+    setHeaderInput("");
+    setBodyInput("");
+
 }
 
   return (

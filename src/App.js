@@ -8,6 +8,7 @@ function App() {
   let [isTapped, setTapped] = useState(false);
 
   const addTask = (userInput) => {
+    setTapped(isTapped = !isTapped);
     if(userInput) {
       const newItem = {
         id: Math.random().toString(36).substr(2, 9),
@@ -53,17 +54,19 @@ function App() {
 
   return (
     <div className="app">
-    <Creation  isTapped={isTapped} />
-      {todos.map((todo) => {
-        return (
-          <ToDo
-            todo={todo}
-            key={todo.id}
-            toggleTask={handleToggle}
-            removeTask={removeTask}
-            />
-        )
-      })}
+      <Creation  isTapped={isTapped} />
+      <div className="app__todos">
+        {todos.map((todo) => {
+          return (
+            <ToDo
+              todo={todo}
+              key={todo.id}
+              toggleTask={handleToggle}
+              removeTask={removeTask}
+              />
+          )
+        })}
+      </div>
     </div>
   )
 }

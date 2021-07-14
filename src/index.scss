@@ -8,10 +8,27 @@ body {
   margin: 0;
   height: 100vh;
   width: 100vw;
+  padding: 0px;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  &__todos {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+  }
 }
 
 .todo-form {
-  margin-top: 10vh;
+  padding-top: 5%;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -55,4 +72,59 @@ body {
 .create-button {
   margin-top: 10vh;
   text-align: center;
+}
+
+.item-todo {
+  border: 1px solid rgba($color: #000000, $alpha: 0.22);
+  border-radius: 4px;
+  padding: 8px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  
+  
+  &:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .2);
+    
+    .item-todo__tools {
+      opacity: 1;
+    }
+  }
+  
+  &__header {
+    font-weight: bold;
+  }
+  
+  &__tools {
+    opacity: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+    
+    .MuiSvgIcon-root {
+      font-size: 18px !important;
+    }
+
+  }
+
+  &__done {
+
+    &:hover {
+      color: #66BB6A;
+    }
+  }
+
+  &__delete {
+
+    &:hover {
+      color: #EF5350;
+    }
+  }
+
+  &__icon {
+    font-size: 16px;
+  }
 }
