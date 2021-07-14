@@ -33,9 +33,11 @@ body {
   align-items: center;
   gap: 16px;
   justify-content: center;
-
+  
+  
   &__textblock {
     border: 1px solid rgba($color: #000000, $alpha: 0.42);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .2);
     border-radius: 4px;
     padding: 8px;
     width: 600px;
@@ -67,6 +69,10 @@ body {
     display: flex;
     justify-content: flex-end;
   }
+
+  &__cancel {
+    color: #EF5350; 
+  }
 }
 
 .create-button {
@@ -79,14 +85,18 @@ body {
   border-radius: 4px;
   padding: 8px;
   width: fit-content;
+  min-width: 240px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  transition: all 0.2s ease-in-out;
   
   
   &:hover {
     cursor: pointer;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .2);
+    transform: translate(2px);
     
     .item-todo__tools {
       opacity: 1;
@@ -95,6 +105,10 @@ body {
   
   &__header {
     font-weight: bold;
+  }
+
+  &__body {
+    white-space: pre-line;
   }
   
   &__tools {
@@ -106,6 +120,11 @@ body {
     
     .MuiSvgIcon-root {
       font-size: 18px !important;
+    }
+
+    .MuiIconButton-root {
+      width: 34px;
+      height: 34px;
     }
 
   }

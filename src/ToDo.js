@@ -16,11 +16,11 @@ function ToDo({ todo, toggleTask, removeTask }) {
           {todo.task.bodyInput}
         </div>
         <div className="item-todo__tools">
-          <IconButton className="item-todo__icon-button item-todo__done">
-            <DoneOutline className="item-todo__icon"/>
-          </IconButton>
           <IconButton className="item-todo__delete">
             <DeleteForever className="item-todo__icon"/>
+          </IconButton>
+          <IconButton className="item-todo__icon-button item-todo__done">
+            <DoneOutline className="item-todo__icon"/>
           </IconButton>
         </div>
       </div>

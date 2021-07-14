@@ -1,10 +1,10 @@
 import { TextareaAutosize, InputBase, IconButton  } from '@material-ui/core';
 import { React, useState } from 'react';
-import { Save } from '@material-ui/icons';
+import { Save, Cancel } from '@material-ui/icons';
 
 
 
-function ToDoForm({ addTask }) {
+function ToDoForm({ addTask, toggleForm }) {
   const [headerInput, setHeaderInput] = useState('');
   const [bodyInput, setBodyInput] = useState('');
 
@@ -19,10 +19,11 @@ function ToDoForm({ addTask }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const a = {headerInput, bodyInput}
-    addTask(a);
-    setHeaderInput("");
-    setBodyInput("");
-
+    if(headerInput.trim() !== "" || bodyInput.trim() !== "") {
+      addTask(a);
+      setHeaderInput("");
+      setBodyInput("");
+    }
 }
 
   return (
@@ -48,6 +49,14 @@ function ToDoForm({ addTask }) {
         />   
 
         <div className="todo-form__tools">
+        <IconButton 
+          onClick={toggleForm}
+          variant="contained" 
+          type="button"
+          color="warning">
+          <Cancel className="todo-form__cancel"/>
+        </IconButton>
+
         <IconButton 
           variant="contained" 
           color="primary" 

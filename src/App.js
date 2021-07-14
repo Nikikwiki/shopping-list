@@ -19,6 +19,10 @@ function App() {
     }
   }
 
+  const toggleForm = () => {
+    setTapped(isTapped = !isTapped);
+  }
+
   const removeTask = (id) => {
     setTodos([...todos.filter((todo) => todo.id !== id)])
   }
@@ -47,6 +51,7 @@ function App() {
       return (
         <ToDoForm 
           addTask={addTask}  
+          toggleForm={toggleForm}
         />
       )
     }
