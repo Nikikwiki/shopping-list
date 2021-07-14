@@ -59,7 +59,7 @@ function App() {
 
   return (
     <div className="app">
-      <Creation  isTapped={isTapped} />
+      <Creation />
       <div className="app__todos">
         {todos.map((todo) => {
           return (

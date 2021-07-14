@@ -52,8 +52,7 @@ function ToDoForm({ addTask, toggleForm }) {
         <IconButton 
           onClick={toggleForm}
           variant="contained" 
-          type="button"
-          color="warning">
+          type="button">
           <Cancel className="todo-form__cancel"/>
         </IconButton>
 
