@@ -25,8 +25,6 @@ function ToDo({ todo, toggleTask, removeTask }) {
   }
 
   const RenderCompleteButton = (props) => {
-    console.log(props);
-    
     if(!todo.complete) {
       return (<TaskCompleteButton/>)
     } else {

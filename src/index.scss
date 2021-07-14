@@ -28,7 +28,6 @@ body {
 }
 
 .todo-form {
-  padding-top: 5%;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -133,6 +132,7 @@ body {
 
     &:hover {
       color: #66BB6A;
+
     }
   }
 
@@ -149,5 +149,10 @@ body {
 
   &__complete {
     background-color: #E8F5E9;
+    border: 1px solid #66BB6A;
   }
+}
+
+.search-input {
+
 }
