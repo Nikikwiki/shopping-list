@@ -1,13 +1,9 @@
 import { AppBar, Toolbar } from '@material-ui/core';
-import {
-  alpha,
-  makeStyles,
-} from '@material-ui/core/styles';
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
+import { alpha, makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
-
+import React from 'react';
 
 function HeaderBar() {
 
@@ -102,6 +98,7 @@ function HeaderBar() {
             />
           </div>
           <div className={classes.grow} />
+          <div style={{color: '#3f51b5'}}>Саня, хуй сосал?</div>
         </Toolbar>
       </AppBar>
     </div>

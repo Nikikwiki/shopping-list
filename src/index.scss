@@ -75,8 +75,10 @@ body {
 }
 
 .create-button {
-  margin-top: 10vh;
-  text-align: center;
+  height: 168px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-todo {

@@ -1,12 +1,12 @@
 import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
 
+import HeaderBar from './HeaderBar';
 import ToDo from './ToDo';
 import ToDoForm from './ToDoForm';
-import HeaderBar from './HeaderBar';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) ? JSON.parse(localStorage.getItem('todos')) : []);
   let [isTapped, setTapped] = useState(false);
 
   const addTask = (userInput) => {
@@ -18,6 +18,7 @@ function App() {
         complete: false,
       }
       setTodos([...todos, newItem]);
+      localStorage.setItem('todos', JSON.stringify([...todos, newItem]));
     }
   }
 
@@ -30,9 +31,11 @@ function App() {
   }
 
   const handleToggle = (id) => {
-    setTodos([
+    const newTodos = [
       ...todos.map((todo) => todo.id === id ? { ...todo, complete: !todo.complete} : {...todo })
-    ])
+    ];
+    setTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
   }
 
   const Creation = () => {
