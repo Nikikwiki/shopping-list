@@ -92,6 +92,9 @@ body {
   flex-direction: column;
   gap: 4px;
   transition: all 0.2s ease-in-out;
+  max-height: 350px;
+  max-width: 350px;
+  overflow: auto;
   
   
   &:hover {
@@ -157,4 +160,11 @@ body {
 
 .app-bar {
   width: 100vw !important;
+}
+
+.sorted-list {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
 }

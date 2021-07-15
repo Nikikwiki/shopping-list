@@ -4,6 +4,9 @@ import React, { useState } from 'react';
 import HeaderBar from './HeaderBar';
 import ToDo from './ToDo';
 import ToDoForm from './ToDoForm';
+import { ReactSortable } from "react-sortablejs";
+
+
 
 function App() {
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) ? JSON.parse(localStorage.getItem('todos')) : []);
@@ -82,18 +85,25 @@ function App() {
     <div className="app">
       <HeaderBar  searchItems={searchItems}/>
       <Creation />
-      <div className="app__todos">
+      <ReactSortable 
+        list={searchedTodos} 
+        setList={setSearchedTodos}
+        className="sorted-list"
+        preventOnFilter
+        filter=".ignore-elements"
+        >
         {searchedTodos.map((todo) => {
-          return (
-            <ToDo
+          return(
+          <ToDo
               todo={todo}
               key={todo.id}
               toggleTask={handleToggle}
               removeTask={removeTask}
-              />
+          />
           )
         })}
-      </div>
+      </ReactSortable>
+
     </div>
   )
 }

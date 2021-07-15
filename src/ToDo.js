@@ -2,38 +2,31 @@ import { IconButton } from '@material-ui/core';
 import { DeleteForever, DoneOutline, RemoveCircleOutline } from '@material-ui/icons';
 
 function ToDo({ todo, toggleTask, removeTask }) {
-  const TaskCompleteButton = (props) => {
-    return (
-      <IconButton 
-        className="item-todo__icon-button item-todo__done"
-        onClick={() => toggleTask(todo.id)}
-      >
-        <DoneOutline className="item-todo__icon"/>
-      </IconButton>
-    );
-  }
 
-  const TaskNotCompleteButton = (props) => {
-    return (
+  const RenderCompleteButton = ({ complete }) => {
+    console.log(complete);
+    return(
       <IconButton 
-        className="item-todo__icon-button item-todo__delete"
+        className={
+          todo.complete ? 
+          "item-todo__icon-button item-todo__delete ignore-elements" : 
+          "item-todo__icon-button item-todo__done ignore-elements"
+        }
         onClick={() => toggleTask(todo.id)}
       >
+      {complete ? (
         <RemoveCircleOutline className="item-todo__icon"/>
+      ) : (
+        <DoneOutline className="item-todo__icon"/>
+      )}
       </IconButton>
     );
-  }
-
-  const RenderCompleteButton = (props) => {
-    if(!todo.complete) {
-      return (<TaskCompleteButton/>)
-    } else {
-      return (<TaskNotCompleteButton/>)
-    }
   }
 
   return (
-    <div key="todo.id" className={todo.complete ? "item-todo item-todo__complete" : "item-todo"}>
+    <div 
+      className={todo.complete ? "item-todo item-todo__complete" : "item-todo"}
+      >
       <div className="item-todo__header">
         {todo.task.headerInput} 
       </div>
@@ -47,7 +40,7 @@ function ToDo({ todo, toggleTask, removeTask }) {
         >
           <DeleteForever className="item-todo__icon"/>
         </IconButton>
-        <RenderCompleteButton/>
+        <RenderCompleteButton complete={todo.complete}/>
       </div>
     </div>
   );
