@@ -7,6 +7,7 @@ import ToDoForm from './ToDoForm';
 
 function App() {
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) ? JSON.parse(localStorage.getItem('todos')) : []);
+  let [searchedTodos, setSearchedTodos] = useState(todos ? todos : []);
   let [isTapped, setTapped] = useState(false);
 
   const addTask = (userInput) => {
@@ -38,6 +39,18 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(newTodos));
   }
 
+  const searchItems = (event) => {
+    const stringToSearch = event.target.value;
+    console.log(event.target.value);
+    searchedTodos = [
+      ...todos.filter((todo) =>
+        todo.task.headerInput.includes(stringToSearch) || todo.task.bodyInput.includes(stringToSearch)
+      )
+    ]
+
+    setSearchedTodos(searchedTodos);
+  }
+
   const Creation = () => {
     if(!isTapped) {
       return (
@@ -64,10 +77,10 @@ function App() {
 
   return (
     <div className="app">
-      <HeaderBar/>
+      <HeaderBar  searchItems={searchItems}/>
       <Creation />
       <div className="app__todos">
-        {todos.map((todo) => {
+        {searchedTodos.map((todo) => {
           return (
             <ToDo
               todo={todo}

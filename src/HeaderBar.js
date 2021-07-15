@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import React from 'react';
 
-function HeaderBar() {
+function HeaderBar({ searchItems }) {
 
   const useStyles = makeStyles((theme) => ({
     grow: {
@@ -89,6 +89,7 @@ function HeaderBar() {
               <SearchIcon />
             </div>
             <InputBase
+              onChange={searchItems}
               placeholder="Поиск"
               classes={{
                 root: classes.inputRoot,
