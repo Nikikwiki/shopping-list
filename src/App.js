@@ -19,6 +19,7 @@ function App() {
         complete: false,
       }
       setTodos([...todos, newItem]);
+      setSearchedTodos([...todos, newItem]);
       localStorage.setItem('todos', JSON.stringify([...todos, newItem]));
     }
   }
@@ -28,7 +29,10 @@ function App() {
   }
 
   const removeTask = (id) => {
-    setTodos([...todos.filter((todo) => todo.id !== id)])
+    const filteredTodos = [...todos.filter((todo) => todo.id !== id)];
+    setTodos(filteredTodos);
+    setSearchedTodos(filteredTodos);
+    localStorage.setItem('todos', JSON.stringify(filteredTodos));
   }
 
   const handleToggle = (id) => {
@@ -36,18 +40,17 @@ function App() {
       ...todos.map((todo) => todo.id === id ? { ...todo, complete: !todo.complete} : {...todo })
     ];
     setTodos(newTodos);
+    setSearchedTodos(newTodos);
     localStorage.setItem('todos', JSON.stringify(newTodos));
   }
 
   const searchItems = (event) => {
-    const stringToSearch = event.target.value;
-    console.log(event.target.value);
+    const stringToSearch = event.target.value.trim();
     searchedTodos = [
       ...todos.filter((todo) =>
         todo.task.headerInput.includes(stringToSearch) || todo.task.bodyInput.includes(stringToSearch)
       )
     ]
-
     setSearchedTodos(searchedTodos);
   }
 
