@@ -3,9 +3,17 @@ import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
-import React from 'react';
+import React, { useEffect, useRef  } from 'react';
 
-function HeaderBar({ searchItems }) {
+function HeaderBar({ searchItems, resetSearch }) {
+  let textInput = useRef(null);
+
+  useEffect( () => {
+    if(resetSearch) {
+      textInput.current.value = "";
+      resetSearch = false;
+    }
+  })
 
   const useStyles = makeStyles((theme) => ({
     grow: {
@@ -74,7 +82,6 @@ function HeaderBar({ searchItems }) {
   const classes = useStyles();
 
   return (
-    
     <div className={classes.grow}>
       <AppBar 
         position="static"
@@ -96,6 +103,7 @@ function HeaderBar({ searchItems }) {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              inputRef={textInput}
             />
           </div>
           <div className={classes.grow} />

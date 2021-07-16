@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 
 import HeaderBar from './HeaderBar';
 import ToDo from './ToDo';
@@ -12,6 +12,7 @@ function App() {
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) ? JSON.parse(localStorage.getItem('todos')) : []);
   let [searchedTodos, setSearchedTodos] = useState(todos ? todos : []);
   let [isTapped, setTapped] = useState(false);
+  let [resetSearch, setResetSearch] = useState(false);
 
   const addTask = (userInput) => {
     setTapped(isTapped = !isTapped);
@@ -24,6 +25,18 @@ function App() {
       setTodos([...todos, newItem]);
       setSearchedTodos([...todos, newItem]);
       localStorage.setItem('todos', JSON.stringify([...todos, newItem]));
+      setResetSearch(!resetSearch);
+    }
+  }
+
+  const editTask = (id, userInput) => {
+    if(userInput) {
+      const newTodos = [
+      ...todos.map((todo) => todo.id === id ? { ...todo, task: userInput} : {...todo })
+      ];
+      setTodos(newTodos);
+      setSearchedTodos(newTodos);
+      localStorage.setItem('todos', JSON.stringify(newTodos));
     }
   }
 
@@ -43,7 +56,11 @@ function App() {
       ...todos.map((todo) => todo.id === id ? { ...todo, complete: !todo.complete} : {...todo })
     ];
     setTodos(newTodos);
-    setSearchedTodos(newTodos);
+
+    const newSearchedTodos = [
+      ...searchedTodos.map((todo) => todo.id === id ? { ...todo, complete: !todo.complete} : {...todo })
+    ];
+    setSearchedTodos(newSearchedTodos);
     localStorage.setItem('todos', JSON.stringify(newTodos));
   }
 
@@ -81,16 +98,28 @@ function App() {
     }
   }
 
+  const moveTodo = newTodos => {
+    setSearchedTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(newTodos));
+  }
+
   return (
     <div className="app">
-      <HeaderBar  searchItems={searchItems}/>
+      <HeaderBar  
+        searchItems={searchItems}
+        resetSearch={resetSearch}
+      />
       <Creation />
       <ReactSortable 
         list={searchedTodos} 
         setList={setSearchedTodos}
+        animation={150}
         className="sorted-list"
         preventOnFilter
         filter=".ignore-elements"
+        onEnd={() => { 
+          moveTodo(searchedTodos); 
+        }}
         >
         {searchedTodos.map((todo) => {
           return(
@@ -99,6 +128,7 @@ function App() {
               key={todo.id}
               toggleTask={handleToggle}
               removeTask={removeTask}
+              editTask={editTask}
           />
           )
         })}

@@ -168,3 +168,47 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.dialog-form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  
+  
+  &__textblock {
+    padding: 16px 24px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__textarea {
+    resize: none;
+    min-height: 48px;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-size: 14px;
+  }
+  
+  &__input {
+    font-size: 16px;
+    border: none;
+    outline: 'none';
+    font-weight: bold !important;
+  }
+
+  &__tools {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__cancel {
+    color: #EF5350; 
+  }
+}
