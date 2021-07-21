@@ -9,6 +9,7 @@ body {
   height: 100vh;
   width: 100vw;
   padding: 0px;
+  background-color: #FAFAFA;
 }
 
 .app {
@@ -32,6 +33,7 @@ body {
   align-items: center;
   gap: 16px;
   justify-content: center;
+  width: 100%;
   
   
   &__textblock {
@@ -39,10 +41,12 @@ body {
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .2);
     border-radius: 4px;
     padding: 8px;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    background-color: #fff;
   }
 
   &__textarea {
@@ -95,6 +99,7 @@ body {
   max-height: 350px;
   max-width: 350px;
   overflow: auto;
+  background-color: #fff;
   
   
   &:hover {
@@ -123,7 +128,7 @@ body {
     margin-top: 8px;
     
     .MuiSvgIcon-root {
-      font-size: 18px !important;
+      font-size: 22px !important;
     }
 
     .MuiIconButton-root {
@@ -136,7 +141,7 @@ body {
   &__done {
 
     &:hover {
-      color: #66BB6A;
+      color: #4CAF50;
 
     }
   }
@@ -154,7 +159,7 @@ body {
 
   &__complete {
     background-color: #E8F5E9;
-    border: 1px solid #66BB6A;
+    border: 1px solid #4CAF50;
   }
 }
 
@@ -210,5 +215,11 @@ body {
 
   &__cancel {
     color: #EF5350; 
+  }
+}
+
+@media (max-width: 520px) {
+  .item-todo__tools {
+    opacity: 1;
   }
 }

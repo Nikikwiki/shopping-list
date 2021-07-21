@@ -9,7 +9,6 @@ function HeaderBar({ searchItems, resetSearch, resetIntoFalseSearch }) {
   let textInput = useRef(null);
 
   useEffect(() => {
-    console.log(resetSearch);
     if(resetSearch) {
       textInput.current.value = "";
       resetIntoFalseSearch();

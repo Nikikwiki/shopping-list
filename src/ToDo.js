@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IconButton, Slide, Dialog, InputBase, TextareaAutosize, DialogContent } from '@material-ui/core';
-import { DeleteForever, DoneOutline, RemoveCircleOutline, Cancel, Save } from '@material-ui/icons';
+import { DeleteForever, Done, RemoveCircleOutline, Cancel, Save } from '@material-ui/icons';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
@@ -43,7 +43,7 @@ function ToDo({ todo, toggleTask, removeTask, editTask }) {
       {complete ? (
         <RemoveCircleOutline className="item-todo__icon"/>
       ) : (
-        <DoneOutline className="item-todo__icon"/>
+        <Done className="item-todo__icon"/>
       )}
       </IconButton>
     );
