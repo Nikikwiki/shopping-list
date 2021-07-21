@@ -59,7 +59,7 @@ function ToDo({ todo, toggleTask, removeTask, editTask }) {
 }
 
   return (
-    <>
+    <div>
       <div 
         className={todo.complete ? "item-todo item-todo__complete" : "item-todo"}
         onClick={handleClickOpen}
@@ -127,7 +127,7 @@ function ToDo({ todo, toggleTask, removeTask, editTask }) {
           </form>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 }
 

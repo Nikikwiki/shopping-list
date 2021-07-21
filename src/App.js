@@ -113,7 +113,7 @@ function App() {
       <ReactSortable 
         list={searchedTodos} 
         setList={setSearchedTodos}
-        animation={150}
+        animation={250}
         className="sorted-list"
         preventOnFilter
         filter=".ignore-elements"
