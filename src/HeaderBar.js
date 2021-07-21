@@ -5,13 +5,14 @@ import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import React, { useEffect, useRef  } from 'react';
 
-function HeaderBar({ searchItems, resetSearch }) {
+function HeaderBar({ searchItems, resetSearch, resetIntoFalseSearch }) {
   let textInput = useRef(null);
 
-  useEffect( () => {
+  useEffect(() => {
+    console.log(resetSearch);
     if(resetSearch) {
       textInput.current.value = "";
-      resetSearch = false;
+      resetIntoFalseSearch();
     }
   })
 

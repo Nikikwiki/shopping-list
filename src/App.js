@@ -37,7 +37,12 @@ function App() {
       setTodos(newTodos);
       setSearchedTodos(newTodos);
       localStorage.setItem('todos', JSON.stringify(newTodos));
+      setResetSearch(!resetSearch);
     }
+  }
+
+  const resetIntoFalseSearch = () => {
+    setResetSearch(false);
   }
 
   const toggleForm = () => {
@@ -108,6 +113,7 @@ function App() {
       <HeaderBar  
         searchItems={searchItems}
         resetSearch={resetSearch}
+        resetIntoFalseSearch={resetIntoFalseSearch}
       />
       <Creation />
       <ReactSortable 
